@@ -16,6 +16,6 @@ public class practiceClass {
 
 		driver=new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"),capability);
 		driver.get("http://www.google.com");
-	}
+	} 
 
 }
