@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class practiceClass {
+public class practiceClassRemoteWebDriver {
 
 	public static void main(String[] args) throws MalformedURLException {
 		WebDriver driver=null;
