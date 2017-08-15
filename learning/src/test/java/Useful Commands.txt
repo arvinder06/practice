@@ -1,7 +1,21 @@
-Register nodes in selenium Ubuntu with chromedriver
-
-java -Dwebdriver.chrome.driver=/home/arvinder/Downloads/chromedriver -jar selenium-server-standalone-3.4.0.jar -role node -hub http://172.17.0.1:4444/grid/register -browser "browserName=chrome, version=ANY, maxInstances=10, platform=LINUX"
-
-Start selenium Hub (Simple command)
+Selenium grid server start
 
 java -jar selenium-server-standalone-3.4.0.jar -role hub
+
+java -Dwebdriver.chrome.driver=/Users/arvinder/eclipse-workspace/maven.1502674278044/learning/src/test/java/chromedriver -jar selenium-server-standalone-3.4.0.jar -role node -hub http://192.168.1.2:4444/grid/register/
+
+
+http://192.168.1.2:4444/grid/console
+
+
+
+
+Docker
+
+http://localhost:5000/grid/console
+
+
+
+Jenkins Server
+
+http://localhost:8080/loginError
