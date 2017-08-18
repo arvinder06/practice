@@ -13,15 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  
-	  <repositories>
-	    <repository>
-	        <id>osssonatype</id>
-	        <name>OSS Sonatype</name>
-	        <url>https://repo1.maven.org/maven2/</url>
-	        <layout>default</layout>
-	    </repository>
-	</repositories>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -42,7 +33,7 @@
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-core</artifactId>
-			<version>1.2.4</version>
+			<version>1.2.5</version>
 		</dependency>
 
 		<dependency>
@@ -58,32 +49,7 @@
 			<version>1.2.5</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-			 <groupId>net.masterthought</groupId>
-			 <artifactId>cucumber-reporting</artifactId>
-			 <version>0.0.23</version>
-		</dependency>
 
-		<dependency>
-		    <groupId>info.cukes</groupId>
-		    <artifactId>cucumber-picocontainer</artifactId>
-		    <version>1.2.5</version>
-		    <scope>test</scope>
-		</dependency>
-
-		<dependency>
-		    <groupId>info.cukes</groupId>
-		    <artifactId>gherkin-jvm-deps</artifactId>
-		    <version>1.0.3</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>info.cukes</groupId>
-		    <artifactId>gherkin3</artifactId>
-		    <version>3.0.0</version>
-		</dependency>
-		
 		<dependency>
 		    <groupId>info.cukes</groupId>
 		    <artifactId>gherkin</artifactId>

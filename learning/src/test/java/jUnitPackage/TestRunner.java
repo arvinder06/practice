@@ -8,9 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions
 (
-		format = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
-		
-		glue= {"src/test/java/jUnitPackage"}, features = { "src/test/java/jUnitPackage" }
+		format = {"pretty"},
+		features = { "src/test/resources/gerkinFile.feature"},
+		tags="@test"
 ) 
 
 public class TestRunner {

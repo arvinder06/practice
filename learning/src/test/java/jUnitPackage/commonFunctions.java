@@ -20,7 +20,7 @@ public class commonFunctions {
 	public void launchBrowser(String browserToLaunch) throws MalformedURLException 
 	{	
 		if(OSName.contains("Windows"))
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"\\learning\\src\\test\\resources\\chromedriverWindows.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"\\Desktop\\Current Code\\maven.1503022456224\\learning\\src\\test\\resources\\chromedriverWindows.exe");
 		else
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"/eclipse-workspace/maven.1502674278044/learning/src/test/resources/chromedriver/MAC");
 		
@@ -47,7 +47,7 @@ public class commonFunctions {
 		switch(website.toUpperCase())
 		{
 			case "GOOGLE":
-				url="https://www.google.com\"";
+				url="https://www.google.com";
 			break;
 			
 			default:
