@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions
 (
-		format = {"pretty"},
+		//format = {"pretty"},
 		features = { "src/test/resources/gerkinFile.feature"},
 		tags="@test"
 ) 

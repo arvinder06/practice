@@ -11,31 +11,76 @@ public class commonFunctions {
 
 	WebDriver driver=null;
 	public static String OSName=System.getProperty("os.name");
+	public static String userDirectory=System.getProperty("user.dir");
+	public static DesiredCapabilities capability;
+	public static String url="";
 	
 	/**
 	 * To launch the browser
 	 * @param browserToLaunch
 	 * @throws MalformedURLException
 	 */
-	public void launchBrowser(String browserToLaunch) throws MalformedURLException 
+	public void launchBrowser(String browserToLaunch,String grid) throws MalformedURLException 
 	{	
+		String chromeDriverpath="";
+			
 		if(OSName.contains("Windows"))
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"\\Desktop\\Current Code\\maven.1503022456224\\learning\\src\\test\\resources\\chromedriverWindows.exe");
+		{
+			chromeDriverpath=userDirectory+"\\src\\test\\resources\\chromedriverWindows.exe";
+			System.setProperty("webdriver.chrome.driver", chromeDriverpath);
+		}
 		else
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"/eclipse-workspace/maven.1502674278044/learning/src/test/resources/chromedriver/MAC");
+		{
+			chromeDriverpath=userDirectory+"/src/test/resources/chromedriverMAC";
+			System.setProperty("webdriver.chrome.driver", chromeDriverpath);
+			
+		}
 		
+		if(grid.equals(""))
+		{
+			switch(browserToLaunch.toUpperCase())
+			{
+				case "CHROME":
+					driver=new ChromeDriver();
+				break;
+				
+				default:
+					driver=new ChromeDriver();
+				break;
+			}
+			System.out.println("Browser successfully launched locally:"+browserToLaunch);
+		}
+		
+		else
+		{
+			setCapabilities(browserToLaunch,grid);
+			driver=new RemoteWebDriver(new URL(grid),capability);
+			System.out.println("Browser successfully launched :"+browserToLaunch+" on Grid: "+grid);
+		}
+			
+	}
+
+	/**
+	 * To set the capabilities
+	 * @param browserToLaunch
+	 * @param grid
+	 */
+	private void setCapabilities(String browserToLaunch, String grid) 
+	{	
 		switch(browserToLaunch.toUpperCase())
 		{
 			case "CHROME":
-				driver=new ChromeDriver();
+				capability=DesiredCapabilities.chrome();
+				capability.setBrowserName("chrome");
+				capability.setPlatform(Platform.ANY);				
 			break;
 			
 			default:
-				driver=new ChromeDriver();
-			break;
+				capability=DesiredCapabilities.chrome();
+				capability.setBrowserName("chrome");
+				capability.setPlatform(Platform.ANY);
+			break; 
 		}
-		
-		System.out.println("Browser successfully launched :"+browserToLaunch);		
 	}
 
 	/**
@@ -43,7 +88,6 @@ public class commonFunctions {
 	 * @param website
 	 */
 	public void launchWebsite(String website) {
-		String url="";
 		switch(website.toUpperCase())
 		{
 			case "GOOGLE":
@@ -56,6 +100,6 @@ public class commonFunctions {
 			
 		}
 		driver.get(url);
-		System.out.println("URL successfully launched: "+url);		
+		System.out.println("URL successfully launched: "+url);	
 	}
 }
