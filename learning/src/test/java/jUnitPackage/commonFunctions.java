@@ -35,6 +35,7 @@ public class commonFunctions {
 			System.setProperty("webdriver.chrome.driver", chromeDriverpath);
 			
 		}
+		System.out.println("Chromedriver Path: "+chromeDriverpath);
 		
 		if(grid.equals(""))
 		{
