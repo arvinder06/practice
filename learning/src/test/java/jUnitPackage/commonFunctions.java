@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class commonFunctions {
 
 	WebDriver driver=null;
+	public static String OSName=System.getProperty("os.name");
 	
 	/**
 	 * To launch the browser
@@ -18,7 +19,10 @@ public class commonFunctions {
 	 */
 	public void launchBrowser(String browserToLaunch) throws MalformedURLException 
 	{	
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"/eclipse-workspace/maven.1502674278044/learning/src/test/java/chromedriver");
+		if(OSName.contains("Windows"))
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"\\learning\\src\\test\\resources\\chromedriverWindows.exe");
+		else
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.home")+"/eclipse-workspace/maven.1502674278044/learning/src/test/resources/chromedriver/MAC");
 		
 		switch(browserToLaunch.toUpperCase())
 		{
