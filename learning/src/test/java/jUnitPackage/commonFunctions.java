@@ -1,7 +1,12 @@
 package jUnitPackage;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -121,8 +126,10 @@ public class commonFunctions {
 	/**
 	 * To launch the Website
 	 * @param website
+	 * @throws Exception 
 	 */
-	public void launchWebsite(String website) {
+	public void launchWebsite(String website) throws Exception 
+	{
 		switch(website.toUpperCase())
 		{
 			case "GOOGLE":
@@ -136,5 +143,16 @@ public class commonFunctions {
 		}
 		driver.get(url);
 		System.out.println("URL successfully launched: "+url);	
+		getScreenshot("urlOpen");
+	}
+	
+	/**
+	 * This function will take screenshots
+	 * @throws Exception
+	 */
+	public void getScreenshot(String fileName) throws Exception 
+	{
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("/Arvinder/Work/SeleniumScreenshot/"+fileName+".png"));
 	}
 }

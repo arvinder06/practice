@@ -17,7 +17,7 @@ public class FeatureDefinition
 	}
 		
 	@And("^I have launch \"([^\"]*)\" website$")
-	public void i_have_launch_website(String website) throws MalformedURLException
+	public void i_have_launch_website(String website) throws Exception
 	{
 		comm.launchWebsite(website);		
 	}
