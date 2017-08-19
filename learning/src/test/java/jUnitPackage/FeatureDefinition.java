@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import junit.framework.Assert;
 
 public class FeatureDefinition
 {
@@ -18,6 +19,6 @@ public class FeatureDefinition
 	@And("^I have launch \"([^\"]*)\" website$")
 	public void i_have_launch_website(String website) throws MalformedURLException
 	{
-		comm.launchWebsite(website);
+		comm.launchWebsite(website);		
 	}
 }
