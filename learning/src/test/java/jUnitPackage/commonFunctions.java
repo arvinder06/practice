@@ -2,6 +2,8 @@ package jUnitPackage;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -19,7 +21,7 @@ public class commonFunctions {
 	public static String userDirectory=System.getProperty("user.dir");
 	public static DesiredCapabilities capability;
 	public static String url="";
-	public String grid="http://localhost:4444//wd/hub";
+	public String grid="http://localhost:5000//wd/hub";
 	
 	/**
 	 * To launch the browser
@@ -28,17 +30,18 @@ public class commonFunctions {
 	 */
 	public void launchBrowser(String browserToLaunch,String grid) throws MalformedURLException 
 	{	
-		grid=System.getProperty("seleniumGrid");
+		this.grid=System.getProperty("seleniumGrid");
 		try
 		{
-			if(grid.equals(""))
+			if(this.grid.equals(""))
 			{
 				
 			}
 		}
 		catch(Exception e)
 		{
-			grid="local";
+			this.grid="local";
+			//this.grid="http://localhost:5000//wd/hub";
 		}
 		
 		String chromeDriverpath="";
@@ -57,7 +60,7 @@ public class commonFunctions {
 		System.out.println("Chromedriver Path: "+chromeDriverpath);
 		
 		
-		if(grid.equalsIgnoreCase("local"))
+		if(this.grid.equalsIgnoreCase("local"))
 		{
 			switch(browserToLaunch.toUpperCase())
 			{
@@ -74,7 +77,7 @@ public class commonFunctions {
 		
 		else
 		{
-			setGrid(grid);
+			setGrid(this.grid);
 			setCapabilities(browserToLaunch,this.grid);
 			driver=new RemoteWebDriver(new URL(this.grid),capability);
 			System.out.println("Browser successfully launched :"+browserToLaunch+" on Grid: "+grid+" : "+this.grid);
@@ -149,10 +152,18 @@ public class commonFunctions {
 	/**
 	 * This function will take screenshots
 	 * @throws Exception
-	 */
+	 */ 
 	public void getScreenshot(String fileName) throws Exception 
 	{
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("/Arvinder/Work/SeleniumScreenshot/"+fileName+".png"));
+		FileUtils.copyFile(scrFile, new File("/Arvinder/Work/SeleniumScreenshot/"+fileName+"_"+getTimeStamp()+".png"));
+	}
+	
+	/**
+	 * Get time stamp
+	 */
+	public String getTimeStamp()
+	{
+		return new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	}
 }
