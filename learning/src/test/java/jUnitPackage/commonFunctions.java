@@ -23,6 +23,19 @@ public class commonFunctions {
 	 */
 	public void launchBrowser(String browserToLaunch,String grid) throws MalformedURLException 
 	{	
+		grid=System.getProperty("seleniumGrid");
+		try
+		{
+			if(grid.equals(""))
+			{
+				
+			}
+		}
+		catch(Exception e)
+		{
+			grid="local";
+		}
+		
 		String chromeDriverpath="";
 			
 		if(OSName.contains("Windows"))
@@ -39,7 +52,7 @@ public class commonFunctions {
 		System.out.println("Chromedriver Path: "+chromeDriverpath);
 		
 		
-		if(grid.equals(""))
+		if(grid.equals("local"))
 		{
 			switch(browserToLaunch.toUpperCase())
 			{
