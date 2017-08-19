@@ -10,10 +10,10 @@ public class FeatureDefinition
 {
 	commonFunctions comm=new commonFunctions();
 	
-	@Given("^I have open browser \"([^\"]*)\" using grid \"([^\"]*)\"$")
-	public void i_have_open_browser(String browserToLaunch,String grid) throws MalformedURLException
+	@Given("^I have open browser \"([^\"]*)\"$")
+	public void i_have_open_browser(String browserToLaunch) throws MalformedURLException
 	{
-		comm.launchBrowser(browserToLaunch,grid);
+		comm.launchBrowser(browserToLaunch,"");
 	}
 		
 	@And("^I have launch \"([^\"]*)\" website$")
