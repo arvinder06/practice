@@ -14,6 +14,7 @@ public class commonFunctions {
 	public static String userDirectory=System.getProperty("user.dir");
 	public static DesiredCapabilities capability;
 	public static String url="";
+	public String grid="";
 	
 	/**
 	 * To launch the browser
@@ -37,6 +38,7 @@ public class commonFunctions {
 		}
 		System.out.println("Chromedriver Path: "+chromeDriverpath);
 		
+		
 		if(grid.equals(""))
 		{
 			switch(browserToLaunch.toUpperCase())
@@ -54,11 +56,28 @@ public class commonFunctions {
 		
 		else
 		{
-			setCapabilities(browserToLaunch,grid);
-			driver=new RemoteWebDriver(new URL(grid),capability);
-			System.out.println("Browser successfully launched :"+browserToLaunch+" on Grid: "+grid);
+			this.grid=setGrid(grid);
+			setCapabilities(browserToLaunch,this.grid);
+			driver=new RemoteWebDriver(new URL(this.grid),capability);
+			System.out.println("Browser successfully launched :"+browserToLaunch+" on Grid: "+grid+" : "+this.grid);
 		}
 			
+	}
+
+	/**
+	 * To set the actual grid
+	 * @return
+	 */
+	private String setGrid(String grid) {
+		
+		switch(grid.toLowerCase())
+		{
+			case "arvindermacgrid":
+				this.grid="http://localhost:4444//wd/hub";
+				break;
+		}
+
+		return this.grid;
 	}
 
 	/**
