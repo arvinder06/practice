@@ -4,20 +4,21 @@ import java.net.MalformedURLException;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import junit.framework.Assert;
 
 public class FeatureDefinition
 {
 	commonFunctions comm=new commonFunctions();
 	
-	@Given("^I have open browser \"([^\"]*)\" using grid \"([^\"]*)\"$")
-	public void i_have_open_browser(String browserToLaunch,String grid) throws MalformedURLException
+	@Given("^I have open browser \"([^\"]*)\"$")
+	public void i_have_open_browser(String browserToLaunch) throws MalformedURLException
 	{
-		comm.launchBrowser(browserToLaunch,grid);
+		comm.launchBrowser(browserToLaunch,"");
 	}
 		
 	@And("^I have launch \"([^\"]*)\" website$")
-	public void i_have_launch_website(String website) throws MalformedURLException
+	public void i_have_launch_website(String website) throws Exception
 	{
-		comm.launchWebsite(website);
+		comm.launchWebsite(website);		
 	}
 }
