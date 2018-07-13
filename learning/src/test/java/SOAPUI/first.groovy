@@ -1,5 +1,7 @@
 //*******Print on console
 
+//Rahul WSDL - http://216.10.245.166:8080/axis2/services/EmployeeManagementService?wsdl
+
 //log.info "Hello"
 
 //*********access properties from different level
