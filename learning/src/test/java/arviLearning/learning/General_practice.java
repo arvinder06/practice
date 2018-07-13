@@ -10,23 +10,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.jagacy.util.JagacyException;
 
 public class General_practice {
 
-	public void main(String[] args) throws IOException, JagacyException 
+	public void main(String[] args) throws IOException 
 	{
 		WebDriver driver;
 		
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setBrowserName("chrome");
-		capabilities.setPlatform(Platform.LINUX);
-		capabilities.setVersion("67.0.3396.87");
+		capabilities.setPlatform(Platform.WINDOWS);
+		capabilities.setVersion("santosh");
 		
-		System.setProperty("webdriver.ie.driver", "C:\\Users\\s99185\\Desktop\\Current Code\\maven.1501742340241\\SSCResponsive\\src\\test\\resources\\IEDriverServer.exe");
-		driver=new RemoteWebDriver(new URL("http://localhost:5000/wd/hub"),capabilities);
-		driver.get("https://www.google.com/");
-		driver.quit();
+		System.setProperty("webdriver.ie.driver", "C:\\Users\\s99185\\Desktop\\Current Code\\maven.1501742340241\\SSCResponsive\\src\\test\\resources\\chromedriverWindows.exe");
+		driver=new RemoteWebDriver(new URL("http://sdc1as739:4444/wd/hub"),capabilities);
+		driver.get("C:\\Users\\s99185\\Desktop\\santosh.html");
+		//driver.quit();
 		
 		
 //		DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
