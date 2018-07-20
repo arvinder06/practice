@@ -32,8 +32,8 @@
 //
 ////*********Hit add employee request with properties 
 //
-//import com.eviware.soapui.support.XmlHolder  //for XML holder
-//import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext //To get the context variable of step we want to run
+import com.eviware.soapui.support.XmlHolder  //for XML holder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext //To get the context variable of step we want to run
 //
 //
 ////Step 1 - Pull the request from the step
@@ -80,9 +80,9 @@ def responseAge=getEmpXmlResponse.getNodeValue("//ns:age")
 def responseDepartment=getEmpXmlResponse.getNodeValue("//ns:department")
 def responseID=getEmpXmlResponse.getNodeValue("//ns:id")
 
-log.info responseName
-log.info responseAge
-log.info responseDepartment
-log.info responseID
+//log.info responseName
+//log.info responseAge
+//log.info responseDepartment
+//log.info responseID
 
-
+assert responseAge=="35"
