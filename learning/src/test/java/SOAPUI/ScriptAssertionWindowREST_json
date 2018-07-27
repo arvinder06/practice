@@ -1,0 +1,15 @@
+//ChIJiT0CAD-uEmsRfdq3ftznH6Q
+//Json Slurper - class to parse the JSon
+import groovy.json.JsonSlurper
+
+def response=messageExchange.response.responseContent
+def jsonParser=new JsonSlurper().parseText(response)
+
+//to get the property value from the test case
+//log.info context.getTestCase().getPropertyValue("expectedgym") 
+
+
+//assertion
+//assert jsonParser.results[5].name=="Anytime Fitness Wynyard"
+assert jsonParser.results[5].name==context.getTestCase().getPropertyValue("expectedgym")
+assert jsonParser.status=="OK"
