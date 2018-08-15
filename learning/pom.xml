@@ -33,11 +33,13 @@
 		</dependency>
 
 
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.4.0</version>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>3.14.0</version>
 		</dependency>
+
 		
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>

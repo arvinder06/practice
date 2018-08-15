@@ -4,8 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
-
-import org.apache.commons.io.FileUtils;
+import org.aspectj.util.FileUtil;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -156,7 +155,7 @@ public class commonFunctions {
 	public void getScreenshot(String fileName) throws Exception 
 	{
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("/Arvinder/Work/SeleniumScreenshot/"+fileName+"_"+getTimeStamp()+".png"));
+		FileUtil.copyFile(scrFile, new File("/Arvinder/Work/SeleniumScreenshot/"+fileName+"_"+getTimeStamp()+".png"));
 	}
 	
 	/**
