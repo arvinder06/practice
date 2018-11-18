@@ -1,4 +1,4 @@
-package arviLearning.learning;
+package arviLearning;
 
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package arviLearning.learning;
+package arviLearning;
 
 import java.io.IOException;
 import java.net.URL;

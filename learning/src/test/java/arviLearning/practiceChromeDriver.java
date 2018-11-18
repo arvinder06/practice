@@ -1,4 +1,4 @@
-package arviLearning.learning;
+package arviLearning;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
