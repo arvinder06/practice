@@ -1,0 +1,98 @@
+//Defect TC Link
+select
+ROW_NUMBER() OVER(ORDER BY TESTCYCL.TC_TEST_ID) AS "Sr. No.",
+//TESTCYCL.TC_TESTCYCL_ID as "testInstanceID",
+TESTCYCL.TC_TEST_ID as "testID",
+//TESTCYCL.TC_CYCLE_ID as "testSetID",
+TEST.TS_NAME,
+TESTCYCL.TC_STATUS
+,BUG.BG_BUG_ID
+,BUG.BG_STATUS
+, BUG.BG_USER_03 as "Defect Type" /*Defect.Defect Type*/
+from
+TESTCYCL,
+TEST,
+LINK,
+BUG
+where
+TEST.TS_TEST_ID= TESTCYCL.TC_TEST_ID
+AND TESTCYCL.TC_TESTCYCL_ID= LINK.LN_ENTITY_ID
+And LINK.LN_BUG_ID= BUG.BG_BUG_ID
+
+And TESTCYCL.TC_STATUS='Failed'
+//And BUG.BG_STATUS='Closed'
+And TC_CYCLE_ID=8206
+
+
+
+// Testers allocation
+Select
+CYCL_FOLD.CF_ITEM_NAME /*Test Set Folder (CYCLE).Name*/
+, CYCLE.CY_CYCLE /*Test Set.Name*/
+, count( TESTCYCL.TC_TEST_INSTANCE) /*Test Instance.Test Instance*/
+from
+ CYCL_FOLD,
+  CYCLE /*Test Set*/  ,
+   TESTCYCL /*Test Instance*/
+
+ where
+  CYCL_FOLD.CF_FATHER_ID /*Test Set Folder (CYCLE).Parent Folder*/       = 778
+  and   CYCLE.CY_FOLDER_ID /*Test Set.Test Set Folder*/      =  CYCL_FOLD.CF_ITEM_ID /*Test Set Folder (CYCLE).Test Set Folder ID*/
+  and  TESTCYCL.TC_CYCLE_ID /*Test Instance.TestSet*/   = CYCLE.CY_CYCLE_ID /*Test Set.Test Set ID*/
+  group by CYCL_FOLD.CF_ITEM_NAME,  CYCLE.CY_CYCLE
+  order by  CYCL_FOLD.CF_ITEM_NAME
+
+
+//Test Plan Folder TCs
+select
+ROW_NUMBER() OVER(ORDER BY TEST.TS_NAME) AS Row#
+,TEST.TS_NAME /*Test.Test Name*/
+from
+TEST
+where
+TEST.TS_SUBJECT in (select ALL_LISTS.AL_ITEM_ID from  ALL_LISTS where  ALL_LISTS.AL_FATHER_ID=2411)
+
+//Defect Age
+select
+//count(*)
+To_Char(BUG.BG_DETECTION_DATE,'DD/MM/YYYY') As "Date detected on",
+BUG.BG_BUG_ID As "QC Bug ID",
+BUG.BG_USER_01 As "JIRA Issue ID", /*Defect.JIRA Issue*/
+BUG.BG_USER_02 As "Issue Priority", /*Defect.Issue Priority*/
+BUG.BG_STATUS As "QC Bug Status", /*Defect.Status*/
+round(to_number(sysdate - BUG.BG_DETECTION_DATE)) AS "Defect Age in Days",
+BUG.BG_DETECTED_BY As "Detected By", /*Defect.Detected By*/
+BUG.BG_RESPONSIBLE As "Assigned To" /*Defect.Assigned To*/
+//sysdate,
+from BUG where
+BUG.BG_DETECTED_BY in('mbhisekar','sgudisay','sraikhelkar','arsingh','hlenka')
+And BUG.BG_STATUS not in ('Closed','Rejected','Deferred')
+//And BUG.BG_DETECTED_IN_RCYC=1096
+//And BUG.BG_DETECTION_DATE = '2018-08-01'
+And BUG.BG_DETECTED_IN_RCYC = 1097
+ORDER BY BUG.BG_BUG_ID
+
+//Get Quality Centre test case Data
+select
+TESTCYCL.TC_TESTCYCL_ID as "testInstanceID",
+TESTCYCL.TC_TEST_ID as "testID",
+TESTCYCL.TC_CYCLE_ID as "testSetID",
+TEST.TS_NAME
+from
+TESTCYCL,
+TEST
+where
+TEST.TS_TEST_ID= TESTCYCL.TC_TEST_ID and
+TC_CYCLE_ID=8349
+
+//Test case per day
+select
+TESTCYCL.TC_ACTUAL_TESTER as "Tester",
+count(*) as "Test cases executed"
+from
+TESTCYCL
+where
+To_char(TESTCYCL.TC_EXEC_DATE,'dd/mm/yyyy') = '29/08/2018' and
+TESTCYCL.TC_ACTUAL_TESTER in('arvindersingh') and
+TESTCYCL.TC_STATUS /*Test Instance.Status*/ in ('Failed','Passed')
+group by TESTCYCL.TC_ACTUAL_TESTER
